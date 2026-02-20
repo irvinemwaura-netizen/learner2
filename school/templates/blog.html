@@ -1,268 +1,90 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %}
-Blog -Book Store
+Blog - Book Store
 {% endblock %}
-{% block content %}
-<!--jinja templating-->
-<main class="main">
 
-    <!-- Page Title -->
-   <!-- End Page Title -->
+{% block content %}
+<main class="main">
 
     <!-- Blog Hero Section -->
     <section id="blog-hero" class="blog-hero section">
-
         <div class="container" data-aos="fade-up" data-aos-delay="100">
-
             <div class="blog-grid">
 
-                <!-- Featured Post (Large) -->
+                {% comment %} Featured Post {% endcomment %}
+                {% with featured_post=blog_posts.0 %}
                 <article class="blog-item featured" data-aos="fade-up">
-                    <img src="assets/img/blog/blog-post-3.webp" alt="Blog Image" class="img-fluid">
+                    <img src="{% static featured_post.image %}" alt="Blog Image" class="img-fluid">
                     <div class="blog-content">
                         <div class="post-meta">
-                            <span class="date">Apr. 14th, 2025</span>
-                            <span class="category">Technology</span>
+                            <span class="date">{{ featured_post.date }}</span>
+                            <span class="category">{{ featured_post.category }}</span>
                         </div>
                         <h2 class="post-title">
-                            <a href="blog-details.html" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>
+                            <a href="{{ featured_post.url }}" title="{{ featured_post.title }}">{{ featured_post.title }}</a>
                         </h2>
                     </div>
-                </article><!-- End Featured Post -->
+                </article>
+                {% endwith %}
 
-                <!-- Regular Posts -->
-                <article class="blog-item" data-aos="fade-up" data-aos-delay="100">
-                    <img src="assets/img/blog/blog-post-portrait-1.webp" alt="Blog Image" class="img-fluid">
+                {% comment %} Regular Hero Posts {% endcomment %}
+                {% for post in blog_posts|slice:"1:5" %}
+                <article class="blog-item" data-aos="fade-up" data-aos-delay="{{ forloop.counter0|add:'100' }}">
+                    <img src="{% static post.image %}" alt="Blog Image" class="img-fluid">
                     <div class="blog-content">
                         <div class="post-meta">
-                            <span class="date">Apr. 14th, 2025</span>
-                            <span class="category">Security</span>
+                            <span class="date">{{ post.date }}</span>
+                            <span class="category">{{ post.category }}</span>
                         </div>
                         <h3 class="post-title">
-                            <a href="blog-details.html" title="Sed do eiusmod tempor incididunt ut labore">Sed do eiusmod tempor incididunt ut labore</a>
+                            <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                         </h3>
                     </div>
-                </article><!-- End Blog Item -->
-
-                <article class="blog-item" data-aos="fade-up" data-aos-delay="200">
-                    <img src="assets/img/blog/blog-post-9.webp" alt="Blog Image" class="img-fluid">
-                    <div class="blog-content">
-                        <div class="post-meta">
-                            <span class="date">Apr. 14th, 2025</span>
-                            <span class="category">Career</span>
-                        </div>
-                        <h3 class="post-title">
-                            <a href="blog-details.html" title="Ut enim ad minim veniam, quis nostrud exercitation">Ut enim ad minim veniam, quis nostrud exercitation</a>
-                        </h3>
-                    </div>
-                </article><!-- End Blog Item -->
-
-                <article class="blog-item" data-aos="fade-up" data-aos-delay="300">
-                    <img src="assets/img/blog/blog-post-7.webp" alt="Blog Image" class="img-fluid">
-                    <div class="blog-content">
-                        <div class="post-meta">
-                            <span class="date">Apr. 14th, 2025</span>
-                            <span class="category">Cloud</span>
-                        </div>
-                        <h3 class="post-title">
-                            <a href="blog-details.html" title="Adipiscing elit, sed do eiusmod tempor incididunt">Adipiscing elit, sed do eiusmod tempor incididunt</a>
-                        </h3>
-                    </div>
-                </article><!-- End Blog Item -->
-
-                <article class="blog-item" data-aos="fade-up" data-aos-delay="400">
-                    <img src="assets/img/blog/blog-post-6.webp" alt="Blog Image" class="img-fluid">
-                    <div class="blog-content">
-                        <div class="post-meta">
-                            <span class="date">Apr. 14th, 2025</span>
-                            <span class="category">Programming</span>
-                        </div>
-                        <h3 class="post-title">
-                            <a href="blog-details.html" title="Excepteur sint occaecat cupidatat non proident">Excepteur sint occaecat cupidatat non proident</a>
-                        </h3>
-                    </div>
-                </article><!-- End Blog Item -->
+                </article>
+                {% endfor %}
 
             </div>
-
         </div>
-
-    </section><!-- /Blog Hero Section -->
+    </section>
 
     <!-- Blog Posts Section -->
     <section id="blog-posts" class="blog-posts section">
-
         <div class="container" data-aos="fade-up" data-aos-delay="100">
             <div class="row gy-4">
-
+                {% for post in blog_posts %}
                 <div class="col-lg-4">
                     <article class="position-relative h-100">
-
                         <div class="post-img position-relative overflow-hidden">
-                            <img src="assets/img/blog/blog-post-1.webp" class="img-fluid" alt="">
+                            <img src="{% static post.image %}" class="img-fluid" alt="Blog Image">
                         </div>
 
                         <div class="meta d-flex align-items-end">
-                            <span class="post-date"><span>12</span>December</span>
+                            <span class="post-date"><span>{{ post.day }}</span>{{ post.month }}</span>
                             <div class="d-flex align-items-center">
-                                <i class="bi bi-person"></i> <span class="ps-2">John Doe</span>
+                                <i class="bi bi-person"></i> <span class="ps-2">{{ post.author }}</span>
                             </div>
                             <span class="px-3 text-black-50">/</span>
                             <div class="d-flex align-items-center">
-                                <i class="bi bi-folder2"></i> <span class="ps-2">Politics</span>
+                                <i class="bi bi-folder2"></i> <span class="ps-2">{{ post.category }}</span>
                             </div>
                         </div>
 
                         <div class="post-content d-flex flex-column">
-
-                            <h3 class="post-title">Dolorum optio tempore voluptas dignissimos</h3>
-                            <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
-
+                            <h3 class="post-title">{{ post.title }}</h3>
+                            <a href="{{ post.url }}" class="readmore stretched-link">
+                                <span>Read More</span><i class="bi bi-arrow-right"></i>
+                            </a>
                         </div>
-
                     </article>
-                </div><!-- End post list item -->
-
-                <div class="col-lg-4">
-                    <article class="position-relative h-100">
-
-                        <div class="post-img position-relative overflow-hidden">
-                            <img src="assets/img/blog/blog-post-2.webp" class="img-fluid" alt="">
-                        </div>
-
-                        <div class="meta d-flex align-items-end">
-                            <span class="post-date"><span>19</span>March</span>
-                            <div class="d-flex align-items-center">
-                                <i class="bi bi-person"></i> <span class="ps-2">Julia Parker</span>
-                            </div>
-                            <span class="px-3 text-black-50">/</span>
-                            <div class="d-flex align-items-center">
-                                <i class="bi bi-folder2"></i> <span class="ps-2">Economics</span>
-                            </div>
-                        </div>
-
-                        <div class="post-content d-flex flex-column">
-                            <h3 class="post-title">Nisi magni odit consequatur autem nulla dolorem</h3>
-                            <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
-                        </div>
-
-                    </article>
-                </div><!-- End post list item -->
-
-                <div class="col-lg-4">
-                    <article class="position-relative h-100">
-
-                        <div class="post-img position-relative overflow-hidden">
-                            <img src="assets/img/blog/blog-post-3.webp" class="img-fluid" alt="">
-                        </div>
-                        <div class="meta d-flex align-items-end">
-                            <span class="post-date"><span>24</span>June</span>
-                            <div class="d-flex align-items-center">
-                                <i class="bi bi-person"></i> <span class="ps-2">Maria Doe</span>
-                            </div>
-                            <span class="px-3 text-black-50">/</span>
-                            <div class="d-flex align-items-center">
-                                <i class="bi bi-folder2"></i> <span class="ps-2">Sports</span>
-                            </div>
-                        </div>
-
-                        <div class="post-content d-flex flex-column">
-                            <h3 class="post-title">Possimus soluta ut id suscipit ea ut. In quo quia et soluta libero sit sint.</h3>
-                            <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
-                        </div>
-
-                    </article>
-                </div><!-- End post list item -->
-
-                <div class="col-lg-4">
-                    <article class="position-relative h-100">
-
-                        <div class="post-img position-relative overflow-hidden">
-                            <img src="assets/img/blog/blog-post-4.webp" class="img-fluid" alt="">
-                        </div>
-                        <div class="meta d-flex align-items-end">
-                            <span class="post-date"><span>05</span>August</span>
-                            <div class="d-flex align-items-center">
-                                <i class="bi bi-person"></i> <span class="ps-2">Maria Doe</span>
-                            </div>
-                            <span class="px-3 text-black-50">/</span>
-                            <div class="d-flex align-items-center">
-                                <i class="bi bi-folder2"></i> <span class="ps-2">Sports</span>
-                            </div>
-                        </div>
-
-                        <div class="post-content d-flex flex-column">
-                            <h3 class="post-title">Non rem rerum nam cum quo minus explicabo eius exercitationem.</h3>
-                            <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
-                        </div>
-
-                    </article>
-                </div><!-- End post list item -->
-
-                <div class="col-lg-4">
-                    <article class="position-relative h-100">
-
-                        <div class="post-img position-relative overflow-hidden">
-                            <img src="assets/img/blog/blog-post-5.webp" class="img-fluid" alt="">
-                        </div>
-
-                        <div class="meta d-flex align-items-end">
-                            <span class="post-date"><span>17</span>September</span>
-                            <div class="d-flex align-items-center">
-                                <i class="bi bi-person"></i> <span class="ps-2">John Parker</span>
-                            </div>
-                            <span class="px-3 text-black-50">/</span>
-                            <div class="d-flex align-items-center">
-                                <i class="bi bi-folder2"></i> <span class="ps-2">Politics</span>
-                            </div>
-                        </div>
-
-                        <div class="post-content d-flex flex-column">
-
-                            <h3 class="post-title">Accusamus quaerat aliquam qui debitis facilis consequatur</h3>
-                            <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
-
-                        </div>
-
-                    </article>
-                </div><!-- End post list item -->
-
-                <div class="col-lg-4">
-                    <article class="position-relative h-100">
-
-                        <div class="post-img position-relative overflow-hidden">
-                            <img src="assets/img/blog/blog-post-6.webp" class="img-fluid" alt="">
-                        </div>
-
-                        <div class="meta d-flex align-items-end">
-                            <span class="post-date"><span>07</span>December</span>
-                            <div class="d-flex align-items-center">
-                                <i class="bi bi-person"></i> <span class="ps-2">Julia White</span>
-                            </div>
-                            <span class="px-3 text-black-50">/</span>
-                            <div class="d-flex align-items-center">
-                                <i class="bi bi-folder2"></i> <span class="ps-2">Economics</span>
-                            </div>
-                        </div>
-
-                        <div class="post-content d-flex flex-column">
-
-                            <h3 class="post-title">Distinctio provident quibusdam numquam aperiam aut</h3>
-                            <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
-
-                        </div>
-
-                    </article>
-                </div><!-- End post list item -->
-
+                </div>
+                {% endfor %}
             </div>
         </div>
+    </section>
 
-    </section><!-- /Blog Posts Section -->
-
-    <!-- Pagination 2 Section -->
+    <!-- Pagination Section -->
     <section id="pagination-2" class="pagination-2 section">
-
         <div class="container">
             <nav class="d-flex justify-content-center" aria-label="Page navigation">
                 <ul>
@@ -273,13 +95,15 @@ Blog -Book Store
                         </a>
                     </li>
 
-                    <li><a href="#" class="active">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
+
+                    {% if i == current_page %}
+                    <li><a href="#" class="active">{{ i }}</a></li>
+                    {% elif i == 4 %}
                     <li class="ellipsis">...</li>
-                    <li><a href="#">8</a></li>
-                    <li><a href="#">9</a></li>
-                    <li><a href="#">10</a></li>
+                    {% else %}
+                    <li><a href="#">{{ i }}</a></li>
+                    {% endif %}
+
 
                     <li>
                         <a href="#" aria-label="Next page">
@@ -290,10 +114,7 @@ Blog -Book Store
                 </ul>
             </nav>
         </div>
-
-    </section><!-- /Pagination 2 Section -->
+    </section>
 
 </main>
-
 {% endblock %}
-

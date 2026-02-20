@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %}
 instructor_profile -Book Store
 {% endblock %}
@@ -12,7 +13,7 @@ instructor_profile -Book Store
       <h1 class="mb-2 mb-lg-0">Instructor Profile</h1>
       <nav class="breadcrumbs">
         <ol>
-          <li><a href="index.html">Home</a></li>
+          <li><a href="{% url 'home' %}">Home</a></li>
           <li class="current">Instructor Profile</li>
         </ol>
       </nav>
@@ -29,12 +30,12 @@ instructor_profile -Book Store
         <div class="col-lg-12">
           <div class="instructor-hero-banner" data-aos="zoom-out" data-aos-delay="200">
             <div class="hero-background">
-              <img src="../../learner2/assets/img/education/showcase-4.webp" alt="Background" class="img-fluid">
+              <img src="{% static 'assets/img/education/showcase-4.webp' %}" alt="Background" class="img-fluid">
               <div class="hero-overlay"></div>
             </div>
             <div class="hero-content">
               <div class="instructor-avatar">
-                <img src="../../learner2/assets/img/education/teacher-7.webp" alt="Instructor" class="img-fluid">
+                <img src="{% static 'assets/img/education/teacher-7.webp' %}" alt="Instructor" class="img-fluid">
                 <div class="status-badge">
                   <i class="bi bi-patch-check-fill"></i>
                   <span>Verified</span>
@@ -185,7 +186,7 @@ instructor_profile -Book Store
                 <div class="courses-grid">
                   <div class="course-item">
                     <div class="course-thumb">
-                      <img src="../../learner2/assets/img/education/courses-5.webp" alt="Course" class="img-fluid">
+                      <img src="{% static 'assets/img/education/courses-5.webp' %}" alt="Course" class="img-fluid">
                       <div class="course-level">Advanced</div>
                     </div>
                     <div class="course-info">
@@ -200,7 +201,7 @@ instructor_profile -Book Store
 
                   <div class="course-item">
                     <div class="course-thumb">
-                      <img src="../../learner2/assets/img/education/courses-9.webp" alt="Course" class="img-fluid">
+                      <img src="{% static 'assets/img/education/courses-9.webp' %}" alt="Course" class="img-fluid">
                       <div class="course-level">Intermediate</div>
                     </div>
                     <div class="course-info">
@@ -215,7 +216,7 @@ instructor_profile -Book Store
 
                   <div class="course-item">
                     <div class="course-thumb">
-                      <img src="../../learner2/assets/img/education/courses-12.webp" alt="Course" class="img-fluid">
+                      <img src="{% static 'assets/img/education/courses-12.webp' %}" alt="Course" class="img-fluid">
                       <div class="course-level">Beginner</div>
                     </div>
                     <div class="course-info">
@@ -234,7 +235,7 @@ instructor_profile -Book Store
                 <div class="reviews-container">
                   <div class="review-card">
                     <div class="review-header">
-                      <img src="../../learner2/assets/img/person/person-f-12.webp" alt="Student" class="reviewer-avatar">
+                      <img src="{% static 'assets/img/person/person-f-12.webp' %}" alt="Student" class="reviewer-avatar">
                       <div class="reviewer-info">
                         <h6>Sarah Williams</h6>
                         <p>Data Scientist at Amazon</p>
@@ -252,7 +253,7 @@ instructor_profile -Book Store
 
                   <div class="review-card">
                     <div class="review-header">
-                      <img src="../../learner2/assets/img/person/person-m-8.webp" alt="Student" class="reviewer-avatar">
+                      <img src="{% static 'assets/img/person/person-m-8.webp' %}" alt="Student" class="reviewer-avatar">
                       <div class="reviewer-info">
                         <h6>David Martinez</h6>
                         <p>ML Engineer at Tesla</p>

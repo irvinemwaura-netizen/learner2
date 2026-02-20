@@ -24,6 +24,7 @@ urlpatterns = [
     path('blog/',views.blog,name='blog'),
     path('blog-details/',views.blog_details,name='blog_details'),
     path('contact/',views.contact,name='contact'),
+    path('courses/',views.courses_details,name='courses'),
     path('courses_details/',views.courses_details,name='courses_details'),
     path('enroll/',views.enroll,name='enroll'),
     path('events/',views.events,name='events'),

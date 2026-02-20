@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %}
 instructors -Book Store
 {% endblock %}
 {% block content %}
 <!--jinja templating-->
-<main class="main">
+
 
     <!-- Page Title -->
     <div class="page-title light-background">
@@ -29,7 +30,7 @@ instructors -Book Store
                 <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
                     <div class="instructor-card">
                         <div class="instructor-image">
-                            <img src="assets/img/education/teacher-2.webp" class="img-fluid" alt="">
+                            <img src="{% static 'assets/img/education/teacher-2.webp' %}" class="img-fluid" alt="">
                             <div class="overlay-content">
                                 <div class="rating-stars">
                                     <i class="bi bi-star-fill"></i>
@@ -73,7 +74,7 @@ instructors -Book Store
                 <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="250">
                     <div class="instructor-card">
                         <div class="instructor-image">
-                            <img src="assets/img/education/teacher-7.webp" class="img-fluid" alt="">
+                            <img src="{% static 'assets/img/education/teacher-7.webp' %}" class="img-fluid" alt="">
                             <div class="overlay-content">
                                 <div class="rating-stars">
                                     <i class="bi bi-star-fill"></i>
@@ -117,7 +118,7 @@ instructors -Book Store
                 <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
                     <div class="instructor-card">
                         <div class="instructor-image">
-                            <img src="assets/img/education/teacher-4.webp" class="img-fluid" alt="">
+                            <img src="{% static 'assets/img/education/teacher-4.webp' %}" class="img-fluid" alt="">
                             <div class="overlay-content">
                                 <div class="rating-stars">
                                     <i class="bi bi-star-fill"></i>
@@ -161,7 +162,7 @@ instructors -Book Store
                 <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="350">
                     <div class="instructor-card">
                         <div class="instructor-image">
-                            <img src="assets/img/education/teacher-9.webp" class="img-fluid" alt="">
+                            <img src="{% static 'assets/img/education/teacher-9.webp' %}" class="img-fluid" alt="">
                             <div class="overlay-content">
                                 <div class="rating-stars">
                                     <i class="bi bi-star-fill"></i>
@@ -205,7 +206,7 @@ instructors -Book Store
                 <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
                     <div class="instructor-card">
                         <div class="instructor-image">
-                            <img src="assets/img/education/teacher-6.webp" class="img-fluid" alt="">
+                            <img src="{% static 'assets/img/education/teacher-6.webp' %}" class="img-fluid" alt="">
                             <div class="overlay-content">
                                 <div class="rating-stars">
                                     <i class="bi bi-star-fill"></i>
@@ -249,7 +250,7 @@ instructors -Book Store
                 <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="450">
                     <div class="instructor-card">
                         <div class="instructor-image">
-                            <img src="../../static/assets/img/education/teacher-1.webp" class="img-fluid" alt="">
+                            <img src="{% static 'assets/img/education/teacher-1.webp' %}" class="img-fluid" alt="">
                             <div class="overlay-content">
                                 <div class="rating-stars">
                                     <i class="bi bi-star-fill"></i>
@@ -293,7 +294,7 @@ instructors -Book Store
                 <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
                     <div class="instructor-card">
                         <div class="instructor-image">
-                            <img src="../../static/assets/img/education/teacher-8.webp" class="img-fluid" alt="">
+                            <img src="{% static 'assets/img/education/teacher-8.webp' %}" class="img-fluid" alt="">
                             <div class="overlay-content">
                                 <div class="rating-stars">
                                     <i class="bi bi-star-fill"></i>
@@ -337,7 +338,7 @@ instructors -Book Store
                 <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="550">
                     <div class="instructor-card">
                         <div class="instructor-image">
-                            <img src="learner2/static/assets/img/education/teacher-10.webp" class="img-fluid" alt="">
+                            <img src="{% static 'assets/img/education/teacher-10.webp' %}" class="img-fluid" alt="">
                             <div class="overlay-content">
                                 <div class="rating-stars">
                                     <i class="bi bi-star-fill"></i>
@@ -384,7 +385,7 @@ instructors -Book Store
 
     </section><!-- /Instructors Section -->
 
-</main>
+
 
 {% endblock %}
 
